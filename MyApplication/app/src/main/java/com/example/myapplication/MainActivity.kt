@@ -118,7 +118,10 @@ class MainActivity : AppCompatActivity() {
         Log.d("activity", "connecting to server")
         mSocket?.isConnected()
         Log.d("activity", "connected")
-
+        
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        newNotifiction()
+        
     }
 
     val numberInput1: EditText = findViewById(R.id.editTextNumberDecimal1)
@@ -141,6 +144,14 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         Log.d("activity", "inside onstart")
         Log.d("onStart", "getOccupied")
+    }
+    
+    override fun newNotification() {
+        
+        val num = BackgroundService.onNm()
+        val newNotificationTextView: TextView = navView.getView().findViewById(R.id.textView40)
+        newNotificationTextView = setText(num)
+        
     }
 
     override fun onPause() {
